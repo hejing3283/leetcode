@@ -1,31 +1,28 @@
 def strStr( haystack, needle):
-  if not haystack :
-    if not needle :
-      return 0
-    else:
-      return -1
+  '''
+  brute force
+  '''
+  if (not haystack and not needle) or ( haystack and not needle)  :
+    return 0
+  elif ( not haystack and needle ) or (len(needle) > len(haystack):
+    return -1
   else:
-    if not needle: 
-      return 0
-    elif len(needle) > len(haystack):
+    ihs = 0 
+    while ihs <  (len(haystack) - len(needle) + 1 ):
+      ind = 0; k = ihs
+      while ind <  len(needle):
+        if haystack[k] == needle[ind]:
+          ind += 1; k += 1
+        else:
+          break
+      if ind == len(needle) :
+        break 
+      else:
+        ihs += 1
+    if ihs == (len(haystack) - len(needle) + 1): 
       return -1
     else:
-      ihs = 0 
-      while ihs <  (len(haystack) - len(needle) + 1 ):
-	ind = 0; k = ihs
-	while ind <  len(needle):
-	  if haystack[k] == needle[ind]:
-	    ind += 1; k += 1
-	  else:
-	    break
-	if ind == len(needle) :
-	  break 
-	else:
-	  ihs += 1
-      if ihs == (len(haystack) - len(needle) + 1): 
-	return -1
-      else:
-	return ihs
+      return ihs
 
 print 3,strStr( 'xyx567x', '56')
 print 0,strStr( 'xyx567x', '')
