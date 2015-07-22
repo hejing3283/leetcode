@@ -1,6 +1,8 @@
 def reverseWords( s):
-  snew = []
-  n = len(s) 
+  ''' 
+  insertion takes lot of time, can be improved
+  '''
+  snew = []; n = len(s) 
   _wd = []
   if not s.strip():
     return ""
@@ -14,7 +16,6 @@ def reverseWords( s):
         _wd = []
       else:
 	continue
-
     snew.insert(0, "".join(_wd ))
     return "".join(snew).strip()
 
