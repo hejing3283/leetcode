@@ -4,7 +4,7 @@ def strStr( haystack, needle):
   '''
   if (not haystack and not needle) or ( haystack and not needle)  :
     return 0
-  elif ( not haystack and needle ) or (len(needle) > len(haystack):
+  elif ( not haystack and needle ) or (len(needle) > len(haystack) ):
     return -1
   else:
     ihs = 0 
