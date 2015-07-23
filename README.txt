@@ -2,8 +2,6 @@ Shotting Board
 ---------------------
 Valid Number ——— we can probably skip this or do it later
 Longest Substring without Repeating Characters
-Longest Palindromic Substring
-Reverse Integer
 
 
 Dead - 1st round
@@ -15,3 +13,6 @@ Implement strstr()
 Reverse Words in a String
 String to Integer (atoi)
 Plus One
+Reverse Integer
+
+Longest Palindromic Substring
