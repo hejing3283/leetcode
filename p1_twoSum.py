@@ -25,11 +25,13 @@ def twoSum( a, t ):
   lenA = len(a)
 
   a = partition(a, 0, lenA - 1)
-  alo = a[:(lenA/2+1)]
-  aup = a[lenA/2:]
+  len1 = lenA/2 ; len2 = lenA - len1
+  alo = a[:len1]
+  aup = a[len1:]
   for t1 in alo:
     t2 = t - t1
-    partition(aup, 0, len(aup) - 1)
+    aup = partition(aup, 0, len2 - 1)
+    if aup[
     
   return 
 if __name__ == '__main__':
