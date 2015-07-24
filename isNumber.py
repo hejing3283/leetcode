@@ -1,4 +1,41 @@
 def isNumber(s):
+  '''
+  '''
+  MAX = 2147483648
+  MIN = -2147483648
+  def str2int(s):
+    s = s.strip()
+    n = len(s)
+    sint = ''; sdec = '' ; sign = 1; join = ''
+    i = 0;
+    if s[i] == '+' and i < n :
+      sign = 1 
+      i += 1
+    elif s[i] == '-' and i < n :
+      sign = -1
+      i += 1
+    num = 0
+    while i < n and s[i].isdigit():
+      d = int(s[i])
+      if num > MAX or ( num == MAX and d > 8 ):
+         return  MAX if sign == 1 else MIN
+      num = num * 10 + d 
+      i += i 
+
+    return(sign * num)
+  
+  s = s.strip()
+  n = len(s)
+  i = 0 
+  dec = ''
+  while i < n and (s[i].isdigit() or s[i] == "." or s[i].lower() == 'e'):
+    i = i + 1
+      
+
+  # decimal
+
+  # scientifi
+  
   return isNum
 
 
