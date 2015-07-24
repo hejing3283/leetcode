@@ -3,42 +3,40 @@ class ListNode:
         self.val = x
         self.next = None
 
-class Solution:
-      # @param {ListNode} l1
-      # @param {ListNode} l2
-      # @return {ListNode}
-      def mergeTwoLists(self, l1, l2):
-	if l1 and l2:
+def mergeTwoLists( a, b ):
+  if not a and b:
+    return b
+  elif not b and a:
+    return a 
+  elif not a and not b:
+    return None
+  else:
+    if a.val > b.val:
+        a, b = b, a
+    a.next = mergeTwoLists(a.next, b)
+    return a or b
+      
+a = [-1, 1, 4, 7 ] 
+l1 = ListNode(-1)
+l1.next = ListNode(1)
+l1.next.next = ListNode(4)
+l1.next.next.next = ListNode(7)
 
-  	elif l1[0] >= l2[-1]:
-  	  return l2 + l1
-  	else :
-  	  p1 = 0 ; p2 = 0 
-  	  l12 = [] 
-  	  while p1 < len(l1) and p2 < len(l2):
-  	    if l1[ p1 ]  > l2[ p2 ]:
-  	      l12.append(l2[p2])
-  	      p2 += 1
-  	    elif l1[p1] < l2[p2]:
-  	      l12.append(l1[p1])
-  	      p1 += 1
-  	    else:
-  	      l12.extend( [ l1[p1], l2[p2]] )
-  	      p1 += 1
-  	      p2 += 1
-  	  return l12
+temp = ListNode(9)
+l2 = ListNode(8); l2.next = temp
+temp =ListNode(0); temp.next = l2
+l2 = temp
 
-class ListNode:
-    def __init__(self, x):
-        self.val = x
-        self.next = None
-l1 = ListNode(1,4); 
-l1.next = 7;  
-l1.next = None; 
-# l2 = ListNode(-1,0); l2 = ListNode(l2,1) ;l2 = ListNode(l2, None); 
+# print l1.val, l1.next.val, l1.next.next.val, l1.next.next.next.val
+# print l2.val, l2.next.val, l2.next.next.val 
 
-print l1
-# print mergeTwoLists( l1, l2)
+out = mergeTwoLists( l1, l2)
+p = out
+while p :
+  print p.val,
+  p = p.next
+
+# print out.val, out.next.val, out.next.next.val
 
 # l1 = [1,4,7]; l2 = [1, 8, 9]
 # print mergeTwoLists( l1, l2)
