@@ -4,23 +4,8 @@ class ListNode:
         self.next = None
 
 def mergeKLists(lists):
-  def mSort(lists, left, right):
-    '''
-    sort according to the first value
-    '''
-    # pL = left; pR = right
-    # while pL < right and pR > left:
-    #   if lists[left].val > lists[right].val:
-	# lists[left], lists[right] = lists[right], lists[left]
-    #   else :
-	# pL += 1
-	# pR -= 1
-    # return lists
-
-  # lists =  mSort( lists , 0, 2)
-  # # for p in out :
-    # print p.val,
-
+  if not lists:
+    return None
   def mergeTwoLists( a, b ):
     if not a and b:
       return b
@@ -34,10 +19,9 @@ def mergeKLists(lists):
       a.next = mergeTwoLists(a.next, b)
       return a or b
 
-  c = mergeTwoLists(lists.pop(0) , lists.pop(0) )
-  pL = 0; pR = len(lists) - 1
-  for  a in lists:
-    c = mergeTwoLists(c, a)
+  c = lists.pop(0)  
+  while lists:
+    c = mergeTwoLists(c, lists.pop(0))
   return c
 
 l1 = ListNode(-1)
@@ -55,8 +39,11 @@ l3 = ListNode(11); l3.next = temp
 temp =ListNode(-3); temp.next = l3
 l3 = temp
 
-out = mergeKLists( [l2, l1, l3] )
-p = out.next
+# out = mergeKLists( [l2, l1, l3] )
+out = mergeKLists( [l2] )
+out = mergeKLists( [] )
+out = mergeKLists( [] )
+p = out 
 while p:
   print p.val,
   p = p.next
