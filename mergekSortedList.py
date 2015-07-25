@@ -19,10 +19,9 @@ def mergeKLists(lists):
       a.next = mergeTwoLists(a.next, b)
       return a or b
 
-  c = lists.pop(0)  
-  while lists:
-    c = mergeTwoLists(c, lists.pop(0))
-  return c
+  while len(lists) > 1:
+    lists.append(mergeTwoLists(lists.pop(0), lists.pop(0)) )
+  return lists[0]
 
 l1 = ListNode(-1)
 l1.next = ListNode(1)
@@ -39,10 +38,14 @@ l3 = ListNode(11); l3.next = temp
 temp =ListNode(-3); temp.next = l3
 l3 = temp
 
-# out = mergeKLists( [l2, l1, l3] )
+out = mergeKLists( [l2, l1, l3] )
+p = out 
+while p:
+  print p.val,
+  p = p.next
+
 out = mergeKLists( [l2] )
-out = mergeKLists( [] )
-out = mergeKLists( [] )
+out = mergeKLists( [ListNode(-1),ListNode(-6),ListNode(1)] )
 p = out 
 while p:
   print p.val,
