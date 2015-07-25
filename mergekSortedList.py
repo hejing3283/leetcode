@@ -4,24 +4,22 @@ class ListNode:
         self.next = None
 
 def mergeKLists(lists):
-  if not lists:
+  import heapq
+  if not lists :
     return None
-  def mergeTwoLists( a, b ):
-    if not a and b:
-      return b
-    elif not b and a:
-      return a 
-    elif not a and not b:
-      return None
-    else:
-      if a.val > b.val:
-          a, b = b, a
-      a.next = mergeTwoLists(a.next, b)
-      return a or b
-
-  while len(lists) > 1:
-    lists.append(mergeTwoLists(lists.pop(0), lists.pop(0)) )
-  return lists[0]
+  heap = []
+  for node in lists:
+    if node:
+      heap.append((node.val,node))
+  heapq.heapify(heap) 
+  head = ListNode(0); curr = head 
+  while heap:
+    pop = heapq.heappop(heap)
+    curr.next = ListNode(pop[0])
+    curr = curr.next
+    if pop[1].next:
+      heapq.heappush(heap, (pop[1].next.val, pop[1].next))
+  return head.next
 
 l1 = ListNode(-1)
 l1.next = ListNode(1)
@@ -44,7 +42,7 @@ while p:
   print p.val,
   p = p.next
 
-out = mergeKLists( [l2] )
+out = mergeKLists( [[]] )
 out = mergeKLists( [ListNode(-1),ListNode(-6),ListNode(1)] )
 p = out 
 while p:
