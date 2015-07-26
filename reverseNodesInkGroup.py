@@ -12,34 +12,27 @@ class ListNode:
 # @param {integer} k
 # @return {ListNode}
 def reverseKGroup(head, k) :
-  def reverse(start,end):
+  def reverse(head):
     ''' given the start node and end node '''
-    newhead=ListNode(0); newhead.next=start
-    while newhead.next != end and start.next :
-      tmp  =  start.next
-      # print "--", start.val, ":", tmp.pNodes()
-      start.next = tmp.next
-      tmp.next = newhead.next
-      newhead.next = tmp
-    return [end, start]
+    dummy = ListNode(0); 
+    while head :
+      curr = head.next
+      head.next = dummy.next
+      dummy.next = head
+      head = curr 
+    return dummy.next 
 
-  if not head: return None
+  if not head or not head.next or k < 2: return None
+  dummy = ListNode(-1); dummy.next = head; prev = dummy
+  counter = 0
+  while head:
+    counter += 1
+    if  counter % k == 0 :
+      prev = reverse(prev, head.next)
+    else:
+      head = head.next
 
-  nhead = ListNode(0); nhead.next = head; start = nhead
-
-  while start.next:
-    end = start
-    for _ in range(k-1):
-      end = end.next
-      if end == None: 
-	return nhead.next
-      else:
-	continue
-    
-    res = reverse( start.next, end.next)
-    start.next = res[0]
-    start = res[1]
-  return nhead.next
+  return dummy.next
 
 a = [1,2,3,4,5 ] 
 l1 = ListNode(a[0])
