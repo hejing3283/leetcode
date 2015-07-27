@@ -8,6 +8,7 @@ def search(nums, t):
     if nums[0] == t: return 0
     else : return -1
 
+  pL = 0
   for i in range(1,n):
     if nums[i] < nums[i-1] :
       pL = i
@@ -31,3 +32,4 @@ print 1, search([4,5,6,0,1,2,3],5)
 print 5, search([4,5,6,0,1,2,3],2) 
 print -1, search([4,5,6,0,1,2,3],7) 
 print 0, search([1],1) 
+print -1, search([1,3],0) 
