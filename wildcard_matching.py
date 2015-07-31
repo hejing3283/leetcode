@@ -8,8 +8,7 @@ def isMatch(s, p):
       if p[curP] == "*" :
 	star = curP;  curP += 1; ss = curS; continue
     if star != -1 : 
-      curP = star + 1;  ss += 1; curS = ss
-      continue
+      curP = star + 1;  ss += 1; curS = ss; continue
     return False
   
   while curP < len(p) and p[curP] == "*": curP += 1 
