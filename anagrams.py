@@ -2,24 +2,25 @@ class Solution:
   # @param {string[]} strs
   # @return {string[]}
   def anagrams(self, strs):
-    strs.sort()
-    strs = [ s for s in strs if s]
-    if len(strs) == 0: return [''] 
-    if len(strs) == 1: return strs
-    prev = None; ans = []
-    for i in range(len(strs)):
-      if strs[i] == prev:  continue
-      prev = strs[i];
-      for j in self.anagrams( strs[:i] + strs[i+1:]):
-	ans.append(strs[i] + j) 
+    from collections import defaultdict
+    d = defaultdict(list)
+    for s in strs:
+      d[''.join(sorted(s))].append(s)
+    
+    ans = []
+    for anagram in d.values():
+      if len(anagram) < 2: continue
+      ans.extend(anagram)
     return ans
 
+
 sol = Solution()
-print sol.anagrams(['a','b','c'])
-print sol.anagrams(['a','c','c'])
-print sol.anagrams(['a'])
-print sol.anagrams([''])
-print sol.anagrams(['',''])
-print sol.anagrams(['','a'])
-print sol.anagrams(['','a', '','c'])
+# print sol.anagrams(['a','b','c'])
+# print sol.anagrams(['a','c','c'])
+# print sol.anagrams(['a'])
+# print sol.anagrams([''])
+# print sol.anagrams(['',''])
+# print sol.anagrams(['','a'])
+# print sol.anagrams(['','a', '','c'])
+print sol.anagrams(["cab","abc","acb","duh","may","ill","buy","bar","","doc"])
 		        
