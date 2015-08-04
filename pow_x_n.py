@@ -10,7 +10,7 @@ class Solution:
     if n == 0: return 1 
     if n < 0 : x = 1.0/x; n = - n; 
     if n == 1: return x
-    if abs(x) == 1: return (x * x if n%2 else x)
+    if x == -1: return (-1 if n%2 else 1)
     if x == 0.0 or x == 0: return 0 
 
     ans = 1; 
@@ -28,4 +28,6 @@ print sol.myPow(1,100)
 print sol.myPow(3,2)
 print sol.myPow(3,-2)
 print sol.myPow(2,-10)
+print sol.myPow(-1.00000, 2147483647)
+print sol.myPow(1.00000, 2147483647)
 
