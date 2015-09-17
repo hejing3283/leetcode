@@ -10,3 +10,4 @@ def jump(nums):
   return nsteps
 
 print jump([2,3,1,1,4]), 2
+print jump([3,2,1,0,4]), 0
