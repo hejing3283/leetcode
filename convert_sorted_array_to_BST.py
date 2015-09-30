@@ -8,12 +8,7 @@
 class Solution(object):
     def bsf(self, idxL, idxR ):
         if idxL > idxR : return None
-        # if idxL == idxR: 
-        #     root = TreeNode( self.nums[idxL] ) 
-        #     root.left = None
-        #     root.right = None
-        #     return root
-        mid = (idxL + idxR )
+	mid = (idxL + idxR )
         mid = (mid-1)/2 if mid%2 else mid/2
         root = TreeNode( self.nums[  mid  ] ) 
         print root.val, idxL, idxR
